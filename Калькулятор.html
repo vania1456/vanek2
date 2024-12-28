@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            width: 100%;
+            text-align: center;
+        }
+        #calculator {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #333;
+        }
+        footer {
+            margin-top: auto;
+            padding: 10px;
+            text-align: center;
+            font-size: 14px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Онлайн Калькулятор</h1>
+    </header>
+    
+    <div id="calculator">
+        <input type="text" id="input" placeholder="Введите значение" onkeydown="checkEnter(event)" />
+        <button onclick="calculate()">Вычислить</button>
+        <div id="result"></div>
+    </div>
+
+    <footer>
+        <p>© 2023 Калькулятор. Все права защищены.</p>
+    </footer>
+
+    <script>
+        function calculate() {
+            const input = document.getElementById('input').value;
+            try {
+                const result = eval(input);
+                document.getElementById('result').innerText = 'Результат: ' + result;
+            } catch (error) {
+                document.getElementById('result').innerText = 'Ошибка: ' + error.message;
+            }
+        }
+
+        function checkEnter(event) {
+            if (event.key === 'Enter') {
+                calculate();
+            }
+        }
+    </script>
+</body>
+</html>
